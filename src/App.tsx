@@ -7,7 +7,7 @@ import "./styles/global.css";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/react-store">
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
