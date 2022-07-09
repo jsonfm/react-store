@@ -1,32 +1,28 @@
 import React from "react";
-import axios from "axios";
-import { Product } from "../../types/product";
 import { ProductCard } from "../../components/ProductCard";
+import { PageProps } from "../../store/types/pages";
+import { Spinner } from "../../components/Spinner";
 
-const Home = () => {
-    const [products, setProducts] = React.useState<Product []>([]);
-
-    const getProducts = async () => {
-        const url = "https://fakestoreapi.com/products";
-        try{
-            const { data } = await axios.get<Product[]>(url);
-            console.log(data);
-            setProducts(data);
-        }catch(err){
-            console.log("Error: ", err);
+const Home = ({ state, dispatch, ctx }: PageProps) => {
+    const renderContent =() => {
+        if(state.filteredProducts.length) {
+            return (
+                <section className="grid lg:grid-cols-3 gap-4 min-h-screen px-5 lg:px-16">
+                {state.products.map((product, index) => (
+                    <ProductCard
+                        product={product}
+                        key={`product-${index}`}
+                    />
+                ))}
+                </section>
+            )
+        }
+        else {
+            return <section className="h-[80vh] flex justify-center items-center text-2xl"><Spinner/></section>
         }
     }
-
-    React.useEffect(() => {getProducts()}, []);
-
     return (
-        <section className="grid lg:grid-cols-3 gap-4 min-h-screen px-5 lg:px-16">
-            {products.map((product, index) => (
-                <ProductCard
-                    product={product}
-                />
-            ))}
-        </section>
+        renderContent()
     );
 }
 

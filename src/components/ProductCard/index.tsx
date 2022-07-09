@@ -1,18 +1,17 @@
 import React from "react";
-import { Product } from "../../types/product";
+import { Product } from "../../store/types/product";
 import  { AiFillStar } from "react-icons/ai";
 
 
 interface Props {
     children?: React.ReactNode;
     product: Product;
-    key?: string;
 }
 
 
-const ProductCard = ({ children, product, key }: Props) => {
+const ProductCard = ({ children, product }: Props) => {
     return (
-        <div className="flex flex-col items-center justify-center" key={key}>
+        <div className="flex flex-col items-center justify-center">
             <img
                 src={product.image}
                 className="min-h-[350px] max-h-[450px] w-full"

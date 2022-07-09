@@ -13,8 +13,8 @@ const Header = () => {
     }
 
     return(
-        <header className="sticky top-0 w-full h-16 z-30 overscroll-y-none overflow-y-none">
-            <nav className="relative w-full h-full flex justify-between items-center px-6">
+        <header className="bg-white sticky top-0 w-full h-16 z-30 overscroll-y-none overflow-y-none">
+            <nav className="relative w-full h-full flex justify-between items-center px-5">
                 <div className="nav-brand">
                     <Link to="/" className="flex items-center text-2xl">
                         <FaReact /><p className="ml-2">RStore</p>
