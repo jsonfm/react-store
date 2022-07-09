@@ -1,7 +1,7 @@
 # React store
-An e-commerce app made with react JS.
+An e-commerce app made with react JS. Here you can find a [Live demo](https://hikki12.github.io/react-store/).
 
-## Features
+## Technologies
 The tools I used on the present project were:
 - React.js with Typescript
 - Fakestore API
