@@ -19,7 +19,6 @@ import { ProductService } from "./services/product.service";
 // Styles
 import "./styles/global.css";
 
-
 // Env variables
 const env = import.meta.env;
 

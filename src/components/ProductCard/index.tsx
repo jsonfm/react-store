@@ -13,6 +13,7 @@ const ProductCard = ({ children, product }: Props) => {
     return (
         <div className="flex flex-col items-center justify-center">
             <img
+                loading="lazy"
                 src={product.image}
                 className="min-h-[350px] max-h-[450px] w-full"
             />

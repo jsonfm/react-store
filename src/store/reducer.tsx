@@ -1,4 +1,5 @@
 import { ApplicationAction } from "./actions";
+import { Product } from "./types/product";
 import { ApplicationState } from "./types/state";
 
 
@@ -7,7 +8,7 @@ export const initialState = (): ApplicationState => ({
     filteredProducts: [],
     shoppingProducts: [],
     searching: "",
-    loading: false,
+    loading: true,
     error: false,
 });
 
@@ -15,10 +16,11 @@ export const initialState = (): ApplicationState => ({
 export const reducer = (state: ApplicationState, action: ApplicationAction): ApplicationState => {
     switch (action.type) {
         case "GET_ALL_PRODUCTS":
+            state.products = action.payload as Product[]
             state.filteredProducts = state.products;
             return {
                 ...state,
-                products: action.payload,
+                loading: false,
             }
 
         case "ERROR":
