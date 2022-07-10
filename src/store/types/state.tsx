@@ -8,4 +8,5 @@ export interface ApplicationState {
     searching: string;
     loading: boolean;
     error: boolean;
+    showHeaderCollapse: boolean;
 }

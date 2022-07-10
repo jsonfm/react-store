@@ -10,6 +10,7 @@ export const initialState = (): ApplicationState => ({
     searching: "",
     loading: true,
     error: false,
+    showHeaderCollapse: false,
 });
 
 
@@ -22,6 +23,10 @@ export const reducer = (state: ApplicationState, action: ApplicationAction): App
                 ...state,
                 loading: false,
             }
+        
+        case "TOOGLE_HEADER_COLLAPSE":
+            state.showHeaderCollapse = action.payload as boolean;
+            return {...state}
 
         case "ERROR":
             console.log("ERROR", action.payload)

@@ -40,7 +40,7 @@ function App() {
   return (
     <Ctx.Provider value={state}>
       <Router basename="/react-store">
-        <Layout>
+        <Layout dispatch={dispatch}>
           <Routes>
             <Route path="/" element={<Home state={state} dispatch={dispatch} ctx={Ctx} />} />
             <Route path="/detail/" element={<ProductDetail />} />

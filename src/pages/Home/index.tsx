@@ -6,7 +6,6 @@ import { Spinner } from "../../components/Spinner";
 
 const Home = ({ state, dispatch, ctx }: PageProps) => {
     const renderContent = () => {
-        console.log("Home State: ", state.filteredProducts);
         if(state.filteredProducts.length > 0) {
             return (
                 <section className="grid lg:grid-cols-3 gap-4 min-h-screen px-5 lg:px-16">
