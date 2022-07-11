@@ -6,8 +6,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Layout } from "./components/Layout";
 
 // Pages
-import { ProductDetail } from "./pages/ProductDetail";
 import { Home } from "./pages/Home";
+import { ProductDetail } from "./pages/ProductDetail";
+import { NotFound } from "./pages/NotFound";
 
 // State and Context
 import { AppContext as Ctx } from "./context";
@@ -18,6 +19,7 @@ import { ProductService } from "./services/product.service";
 
 // Styles
 import "./styles/global.css";
+
 
 // Env variables
 const env = import.meta.env;
@@ -42,8 +44,10 @@ function App() {
       <Router basename="/react-store">
         <Layout dispatch={dispatch}>
           <Routes>
+            <Route path="*" element={<NotFound />} />
             <Route path="/" element={<Home state={state} dispatch={dispatch} ctx={Ctx} />} />
-            <Route path="/detail/" element={<ProductDetail />} />
+            <Route path="product/:title" element={<ProductDetail state={state} />} />
+            <Route path="/payment" />
           </Routes>
         </Layout>
       </Router>

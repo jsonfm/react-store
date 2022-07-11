@@ -2,6 +2,7 @@ import React from "react";
 import { Product } from "../../store/types/product";
 import  { AiFillStar } from "react-icons/ai";
 import { ApplicationAction } from "../../store/actions";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
 
 interface Props {
@@ -12,6 +13,7 @@ interface Props {
 
 
 const ProductCard = ({ children, product, dispatch }: Props) => {
+    const navigateTo: NavigateFunction = useNavigate();
     
     const addProductToCart = () =>{
         if(dispatch){
@@ -19,15 +21,21 @@ const ProductCard = ({ children, product, dispatch }: Props) => {
         }
     }
 
+    const goToProductDetail = () => {
+        const url = `product/${product.title}`;
+        navigateTo(url);
+    }
+
     return (
         <div className="flex flex-col items-center justify-center">
             <img
                 loading="lazy"
                 src={product.image}
-                className="min-h-[350px] max-h-[450px] w-full"
+                className="min-h-[380px] max-h-[480px] w-[90%] hover:cursor-pointer"
+                onClick={goToProductDetail}
             />
             <div className="w-full space-y-2">
-                <p className="text-2xl font-bold">{product.title}</p>
+                <p className="text-2xl font-bold" onClick={goToProductDetail}>{product.title}</p>
                 <p className="text-xl">$ {product.price}</p>
                 <p className="text-xl capitalize">{product.category}</p>
                 <div className="flex justify-between">
@@ -40,3 +48,7 @@ const ProductCard = ({ children, product, dispatch }: Props) => {
 }
 
 export { ProductCard };
+    function useNavigation(): NavigateFunction {
+        throw new Error("Function not implemented.");
+    }
+

@@ -43,13 +43,15 @@ const Header = ({ dispatch }: HeaderProps) => {
                         <FaReact /><p className="ml-2">RStore</p>
                     </Link>
                 </div>
-                <div className={`${showHeaderCollapse ? 'visible' : 'invisible'} fixed top-0 left-0 flex flex-col bg-white h-screen w-full z-30 overflow-y-none overscroll-y-none transition ease-in-out duration-100 text-xl`}>
+                <div className={`${showHeaderCollapse ? 'visible' : 'invisible'} fixed top-0 left-0 flex flex-col items-center bg-white h-screen w-full z-30 overflow-y-none overscroll-y-none transition ease-in-out duration-100 text-xl`}>
                     <div className="font-bold text-3xl h-16 w-full px-5 flex items-center justify-end gap-2 text-black" onClick={toggleHeaderCollapse}>
                         <IoMdClose/>
                     </div>
-                    <p className="text-center mt-4">ABOUT</p>
+                    <p className="text-center text-2xl uppercase">React Store</p>
+                    <Link to="/" className="mt-4 font-semibold">Home</Link>
+                    <p className="text-center">About</p>
                 </div>
-                <div className={`${showShoppingCollapse ? 'visible' : 'invisible'} fixed top-12 right-0 flex flex-col justify-between gap-3 rounded-lg border-2 py-3 px-5 w-5/6 lg:w-96 lg:right-5 h-96 bg-white `}>
+                <div className={`${showShoppingCollapse ? 'visible' : 'invisible'} fixed top-12 right-1 lg:right-5 flex flex-col justify-between gap-5 rounded-lg border-2 py-3 px-5 w-5/6 lg:w-96 h-96 bg-white `}>
                     <div className="pl-3">Total items: {shoppingProducts.length}</div>
                     <div className="h-[80%] flex flex-col gap-3  overflow-y-auto overscroll-y-auto py-2 px-2">
                     {shoppingProducts.map((product, index) =>(
