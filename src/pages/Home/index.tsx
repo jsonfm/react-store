@@ -5,6 +5,7 @@ import { Spinner } from "../../components/Spinner";
 
 
 const Home = ({ state, dispatch, ctx }: PageProps) => {
+
     const renderContent = () => {
         if(state.filteredProducts.length > 0) {
             return (
@@ -13,6 +14,7 @@ const Home = ({ state, dispatch, ctx }: PageProps) => {
                     <ProductCard
                         product={product}
                         key={`product-${index}`}
+                        dispatch={dispatch}
                     />
                 ))}
                 </section>

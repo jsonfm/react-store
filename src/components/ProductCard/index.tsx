@@ -1,15 +1,24 @@
 import React from "react";
 import { Product } from "../../store/types/product";
 import  { AiFillStar } from "react-icons/ai";
+import { ApplicationAction } from "../../store/actions";
 
 
 interface Props {
     children?: React.ReactNode;
     product: Product;
+    dispatch?: React.Dispatch<ApplicationAction>
 }
 
 
-const ProductCard = ({ children, product }: Props) => {
+const ProductCard = ({ children, product, dispatch }: Props) => {
+    
+    const addProductToCart = () =>{
+        if(dispatch){
+            dispatch({type: "ADD_PRODUCT_TO_CART", payload: product});
+        }
+    }
+
     return (
         <div className="flex flex-col items-center justify-center">
             <img
@@ -23,7 +32,7 @@ const ProductCard = ({ children, product }: Props) => {
                 <p className="text-xl capitalize">{product.category}</p>
                 <div className="flex justify-between">
                     <div className="flex items-center gap-2 text-xl">{product.rating.rate} <AiFillStar/></div>
-                    <button className="w-36 bg-green-500 text-white text-xl py-1">Add to cart</button>
+                    <button onClick={addProductToCart} className="w-36 bg-green-500 text-white text-xl py-1">Add to cart</button>
                 </div>
             </div>
         </div>

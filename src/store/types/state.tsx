@@ -9,4 +9,5 @@ export interface ApplicationState {
     loading: boolean;
     error: boolean;
     showHeaderCollapse: boolean;
+    showShoppingCollapse: boolean;
 }
