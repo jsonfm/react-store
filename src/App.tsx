@@ -9,6 +9,7 @@ import { Layout } from "./components/Layout";
 import { Home } from "./pages/Home";
 import { ProductDetail } from "./pages/ProductDetail";
 import { NotFound } from "./pages/NotFound";
+import { About } from "./pages/About";
 
 // State and Context
 import { AppContext as Ctx } from "./context";
@@ -18,7 +19,8 @@ import { reducer, initialState } from "./store/reducer";
 import { ProductService } from "./services/product.service";
 
 // Styles
-import "./styles/global.css";
+import "@/styles/global.css";
+import { Payment } from "./pages/Payment";
 
 
 // Env variables
@@ -37,6 +39,12 @@ function App() {
     .catch(err => {
       dispatch({type: "ERROR", payload: err});
     });
+    
+    productService.getAllCategories()
+    .then(categories => {
+      console.log("categories: ", categories);
+    })
+
   }, []);
 
   return (
@@ -46,8 +54,9 @@ function App() {
           <Routes>
             <Route path="*" element={<NotFound />} />
             <Route path="/" element={<Home state={state} dispatch={dispatch} ctx={Ctx} />} />
+            <Route path="/about" element={<About/>} />
             <Route path="product/:title" element={<ProductDetail state={state} />} />
-            <Route path="/payment" />
+            <Route path="/payment" element={<Payment state={state}/>}/>
           </Routes>
         </Layout>
       </Router>

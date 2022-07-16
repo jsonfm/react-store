@@ -10,7 +10,7 @@ const ProductDetail = ({ state }: ProductDetailProps) => {
     const { title } = useParams();
     const { products } = state;
     const product = products.find(product => product.title.trim() === title?.trim()) as Product;
-    console.log(product);
+
     return (
         <section className="min-h-[90vh] px-5">
           <article className="grid lg:grid-cols-2 place-content-center mt-16">
@@ -24,7 +24,7 @@ const ProductDetail = ({ state }: ProductDetailProps) => {
             <p className="text-xl lg:text-4xl font-bold text-center mb-4">{product.title}</p>
             <button className="bg-green-500 text-white text-xl px-6 py-3 mt-1 mb-4">Add To cart</button>
             <p className="text-xl lg:text-3xl">$ {product.price}</p>
-            <p className="text-justify text-xl lg:text-3xl">{product.description}</p>
+            <p className="text-justify text-md lg:text-3xl">{product.description}</p>
            </div>
            </article>
         </section>

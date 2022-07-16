@@ -13,6 +13,11 @@ export interface GetAllProducts {
     payload: Product[];
 }
 
+export interface GetAllCategories {
+    type: "GET_ALL_CATEGORIES";
+    payload: null;
+}
+
 // For Cart management
 export interface ToggleShoppingCollapse {
     type: "TOGGLE_SHOPPING_COLLAPSE";
@@ -37,9 +42,13 @@ export interface ErrorInterface {
 
 
 export type ApplicationAction = 
+    // service
     | GetAllProducts
+    | GetAllCategories
+    // Header
     | ToggleHeaderCollapse
     | ErrorInterface
+    // Shoping Cart
     | ToggleShoppingCollapse
     | AddProductToCart
     | RemoveProductFromCart

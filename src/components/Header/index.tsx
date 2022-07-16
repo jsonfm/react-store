@@ -22,7 +22,6 @@ const Header = ({ dispatch }: HeaderProps) => {
     const { showHeaderCollapse, showShoppingCollapse } = state;
 
     const toggleHeaderCollapse = () => {
-        // console.log("dispatch: ", dispatch);
         dispatch({type: "TOGGLE_HEADER_COLLAPSE", payload:!state.showHeaderCollapse})
     }
     const toggleShoppingCollapse = () => {
@@ -36,11 +35,11 @@ const Header = ({ dispatch }: HeaderProps) => {
     const { shoppingProducts } = state;
 
     return(
-        <header className="bg-white sticky top-0 w-full h-16 z-30 overscroll-y-none overflow-y-none">
-            <nav className="relative w-full h-full flex justify-between items-center px-5">
+        <header className="bg-white sticky top-0 w-full h-16 z-30 overscroll-y-none overflow-y-none drop-shadow-md">
+            <nav className="relative w-full h-full flex justify-between items-center px-5 lg:text-xl">
                 <div className="nav-brand">
                     <Link to="/" className="flex items-center text-2xl">
-                        <FaReact /><p className="ml-2">RStore</p>
+                        <a className="flex items-center"><FaReact /><p className="ml-2">RStore</p></a>
                     </Link>
                 </div>
                 <div className={`${showHeaderCollapse ? 'visible' : 'invisible'} fixed top-0 left-0 flex flex-col items-center bg-white h-screen w-full z-30 overflow-y-none overscroll-y-none transition ease-in-out duration-100 text-xl`}>
@@ -48,10 +47,14 @@ const Header = ({ dispatch }: HeaderProps) => {
                         <IoMdClose/>
                     </div>
                     <p className="text-center text-2xl uppercase">React Store</p>
-                    <Link to="/" className="mt-4 font-semibold">Home</Link>
-                    <p className="text-center">About</p>
+                    <Link to="/" className="mt-4 font-semibold" onClick={toggleHeaderCollapse}>
+                        <a>Home</a>
+                    </Link>
+                    <Link to="/about" className="mt-4 font-semibold" onClick={toggleHeaderCollapse}>
+                        <a>About</a>
+                    </Link>
                 </div>
-                <div className={`${showShoppingCollapse ? 'visible' : 'invisible'} fixed top-12 right-1 lg:right-5 flex flex-col justify-between gap-5 rounded-lg border-2 py-3 px-5 w-5/6 lg:w-96 h-96 bg-white `}>
+                <div className={`${showShoppingCollapse ? 'visible' : 'invisible'} fixed top-12 mt-1 right-1 lg:right-5 flex flex-col justify-between gap-5 rounded-lg border-2 py-3 px-5 w-5/6 lg:w-96 max-w-[400px] h-96 bg-white`}>
                     <div className="pl-3">Total items: {shoppingProducts.length}</div>
                     <div className="h-[80%] flex flex-col gap-3  overflow-y-auto overscroll-y-auto py-2 px-2">
                     {shoppingProducts.map((product, index) =>(
@@ -60,12 +63,16 @@ const Header = ({ dispatch }: HeaderProps) => {
                                 src={product.image}
                                 className="w-16 h-16"
                             />
-                            <p className="w-[60%]">{product.title}</p>
-                            <p onClick={() => {deleteCartElement(product)}}><AiFillCloseCircle/></p>
+                            <p className="w-[60%] mx-auto">{product.title}</p>
+                            <p className="ml-auto" onClick={() => {deleteCartElement(product)}}><AiFillCloseCircle/></p>
                         </div>
                     ))}
                     </div>
-                    <button className="w-full h-10 max-w-[300px] flex items-center justify-center bg-green-500 text-white">Proceed to pay</button>
+                    <button className="w-full h-10 max-w-[300px] flex items-center justify-center bg-green-500 text-white" onClick={toggleShoppingCollapse}>
+                        <Link to="/payment">
+                            <a>Payment</a>
+                        </Link>
+                    </button>
                 </div>
 
                 <div className={`text-2xl flex gap-5`}>

@@ -1,7 +1,7 @@
 import React from "react";
-import { ProductCard } from "../../components/ProductCard";
-import { PageProps } from "../../store/types/pages";
-import { Spinner } from "../../components/Spinner";
+import { ProductCard } from "@/components/ProductCard";
+import { PageProps } from "@/store/types/pages";
+import { Spinner } from "@/components/Spinner";
 
 
 const Home = ({ state, dispatch, ctx }: PageProps) => {
@@ -9,7 +9,7 @@ const Home = ({ state, dispatch, ctx }: PageProps) => {
     const renderContent = () => {
         if(state.filteredProducts.length > 0) {
             return (
-                <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 min-h-screen px-5 lg:px-16">
+                <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 min-h-screen px-5 lg:px-16 py-12">
                 {state.products.map((product, index) => (
                     <ProductCard
                         product={product}

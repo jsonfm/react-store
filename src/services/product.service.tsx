@@ -27,4 +27,9 @@ export class ProductService implements ProductServiceDriver {
         const { data } = await axios.get<Product>(`${this.url}/${id}`);
         return data;
     }
+
+    async getAllCategories() {
+        const { data } = await axios.get<String []>(`${this.url}/categories`);
+        return data
+    }
 }

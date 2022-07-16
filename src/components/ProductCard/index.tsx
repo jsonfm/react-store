@@ -27,18 +27,20 @@ const ProductCard = ({ children, product, dispatch }: Props) => {
     }
 
     return (
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center h-[660px]">
             <img
                 loading="lazy"
                 src={product.image}
-                className="min-h-[380px] max-h-[480px] w-[90%] hover:cursor-pointer"
+                className="h-[400px] w-[90%] hover:cursor-pointer mb-3"
                 onClick={goToProductDetail}
             />
-            <div className="w-full space-y-2">
-                <p className="text-2xl font-bold" onClick={goToProductDetail}>{product.title}</p>
-                <p className="text-xl">$ {product.price}</p>
-                <p className="text-xl capitalize">{product.category}</p>
-                <div className="flex justify-between">
+            <div className="w-full space-y-2 h-[30%]">
+                <div className="h-[80%]">
+                    <p className="text-2xl font-bold h-[50%] mb-5 overflow-y-auto" onClick={goToProductDetail}>{product.title}</p>
+                    <p className="text-xl mt-auto">$ {product.price}</p>
+                    <p className="text-xl capitalize">{product.category}</p>
+                </div>
+                <div className="flex justify-between mt-auto">
                     <div className="flex items-center gap-2 text-xl">{product.rating.rate} <AiFillStar/></div>
                     <button onClick={addProductToCart} className="w-36 bg-green-500 text-white text-xl py-1">Add to cart</button>
                 </div>
