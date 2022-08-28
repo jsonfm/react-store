@@ -36,12 +36,12 @@ export const Payment = ({ state }:PaymentProps) => {
                 {shoppingProducts.length < 1 
                 ? <div className="text-4x mx-auto my-auto font-bold h-96 w-full flex items-center justify-center"> There are not products on Cart.</div>
                 :<div className="grid gap-2 place-content-center">
-                    <p className="font-semibold mb-12 text-xl uppercase">Selected Products</p>
+                    <p className="font-semibold mb-16 text-xl uppercase text-center">Selected Products</p>
                     {shoppingProducts.map((product, index) =>(
                         <div className="grid grid-cols-2 gap-2 h-72" key={`key-${index}`}>
                             <img
                                 loading="lazy"
-                                className="h-64 max-w-56"
+                                className="h-56 max-w-56"
                                 src={product.image}
                             />
                             <div className="flex flex-col gap-2">

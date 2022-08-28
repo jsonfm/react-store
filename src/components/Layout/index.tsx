@@ -13,7 +13,7 @@ const Layout = ({ children, dispatch }: Props) => {
     return(
         <>
         <Header dispatch={dispatch} />
-        <main>
+        <main className="max-w-[1200px] mx-auto">
             {children}
         </main>
         <Footer />

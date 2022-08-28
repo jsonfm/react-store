@@ -36,21 +36,21 @@ const Header = ({ dispatch }: HeaderProps) => {
 
     return(
         <header className="bg-white sticky top-0 w-full h-16 z-30 overscroll-y-none overflow-y-none drop-shadow-md">
-            <nav className="relative w-full h-full flex justify-between items-center px-5 lg:text-xl">
+            <nav className="relative w-full h-full flex justify-between items-center px-5 lg:text-xl max-w-[1200px] mx-auto">
                 <div className="nav-brand">
                     <Link to="/" className="flex items-center text-2xl">
                         <a className="flex items-center"><FaReact /><p className="ml-2">RStore</p></a>
                     </Link>
                 </div>
-                <div className={`${showHeaderCollapse ? 'visible' : 'invisible'} fixed top-0 left-0 flex flex-col items-center bg-white h-screen w-full z-30 overflow-y-none overscroll-y-none transition ease-in-out duration-100 text-xl`}>
-                    <div className="font-bold text-3xl h-16 w-full px-5 flex items-center justify-end gap-2 text-black" onClick={toggleHeaderCollapse}>
+                <div className={`${showHeaderCollapse ? 'visible' : 'invisible'} fixed top-0 left-0 flex flex-col items-center bg-white h-screen w-full lg:visible lg:h-auto lg:w-96 lg:flex-row lg:items-center lg:justify-center lg:gap-3 lg:hidden`}>
+                    <div className="font-bold text-3xl h-16 w-full px-5 flex items-center justify-end gap-2 text-black lg:hidden" onClick={toggleHeaderCollapse}>
                         <IoMdClose/>
                     </div>
-                    <p className="text-center text-2xl uppercase">React Store</p>
-                    <Link to="/" className="mt-4 font-semibold" onClick={toggleHeaderCollapse}>
+                    <p className="text-center text-2xl uppercase lg:hidden">React Store</p>
+                    <Link to="/" className="mt-4 lg:mt-0 font-semibold" onClick={toggleHeaderCollapse}>
                         <a>Home</a>
                     </Link>
-                    <Link to="/about" className="mt-4 font-semibold" onClick={toggleHeaderCollapse}>
+                    <Link to="/about" className="mt-4 lg:mt-0 font-semibold" onClick={toggleHeaderCollapse}>
                         <a>About</a>
                     </Link>
                 </div>
@@ -68,7 +68,7 @@ const Header = ({ dispatch }: HeaderProps) => {
                         </div>
                     ))}
                     </div>
-                    <button className="w-full h-10 max-w-[300px] flex items-center justify-center bg-green-500 text-white" onClick={toggleShoppingCollapse}>
+                    <button className="w-full h-10  flex items-center justify-center bg-green-500 text-white" onClick={toggleShoppingCollapse}>
                         <Link to="/payment">
                             <a>Payment</a>
                         </Link>
@@ -83,7 +83,7 @@ const Header = ({ dispatch }: HeaderProps) => {
                         }
                         <BsFillCartFill/>
                     </div>
-                    <GiHamburgerMenu onClick={toggleHeaderCollapse}/>
+                    <GiHamburgerMenu className="lg:hidden" onClick={toggleHeaderCollapse}/>
                 </div>
             </nav>
         </header>

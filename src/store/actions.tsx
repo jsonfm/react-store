@@ -15,7 +15,7 @@ export interface GetAllProducts {
 
 export interface GetAllCategories {
     type: "GET_ALL_CATEGORIES";
-    payload: null;
+    payload: string[];
 }
 
 // For Cart management

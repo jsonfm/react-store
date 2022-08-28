@@ -42,8 +42,9 @@ function App() {
     
     productService.getAllCategories()
     .then(categories => {
-      console.log("categories: ", categories);
+      dispatch({type: "GET_ALL_CATEGORIES", payload: categories});
     })
+    .catch(err => {console.log(err);});
 
   }, []);
 
@@ -55,7 +56,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
             <Route path="/" element={<Home state={state} dispatch={dispatch} ctx={Ctx} />} />
             <Route path="/about" element={<About/>} />
-            <Route path="product/:title" element={<ProductDetail state={state} />} />
+            <Route path="product/:title" element={<ProductDetail state={state} dispatch={dispatch} />} />
             <Route path="/payment" element={<Payment state={state}/>}/>
           </Routes>
         </Layout>

@@ -7,6 +7,7 @@ export const initialState = (): ApplicationState => ({
     products: [],
     filteredProducts: [],
     shoppingProducts: [],
+    categories: [],
     searching: "",
     loading: true,
     error: false,
@@ -30,6 +31,12 @@ export const reducer = (state: ApplicationState, action: ApplicationAction): App
                 ...state,
                 loading: false,
             }
+
+        case "GET_ALL_CATEGORIES":
+            if(action.payload){
+                state.categories = action.payload as Array<string>;
+            }
+            return {...state}
         
         // Cart Management
         case "TOGGLE_SHOPPING_COLLAPSE":

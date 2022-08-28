@@ -29,7 +29,7 @@ export class ProductService implements ProductServiceDriver {
     }
 
     async getAllCategories() {
-        const { data } = await axios.get<String []>(`${this.url}/categories`);
+        const { data } = await axios.get<string []>(`${this.url}/categories`);
         return data
     }
 }

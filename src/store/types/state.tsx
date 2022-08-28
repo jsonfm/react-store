@@ -5,6 +5,7 @@ export interface ApplicationState {
     products: Array<Product>;
     filteredProducts: Array<Product>;
     shoppingProducts: Array<Product>;
+    categories: string[];
     searching: string;
     loading: boolean;
     error: boolean;

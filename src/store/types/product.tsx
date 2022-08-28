@@ -16,4 +16,5 @@ export interface Product {
 export interface ProductServiceDriver {
     getAll(): Product[] | Promise<Product[]>;
     findOne(id: Product["id"]): Product | Promise<Product>;
+    getAllCategories(): string[] | Promise<string[]>;
 }
