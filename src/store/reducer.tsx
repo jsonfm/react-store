@@ -5,6 +5,7 @@ import { ApplicationState } from "./types/state";
 
 export const initialState = (): ApplicationState => ({
     products: [],
+    filter: "",
     filteredProducts: [],
     shoppingProducts: [],
     categories: [],

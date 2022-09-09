@@ -6,12 +6,15 @@ import { Spinner } from "@/components/Spinner";
 
 
 const Home = ({ state, dispatch, ctx }: PageProps) => {
+
     const tags = state.categories;
+    const { shoppingProducts } = state;
 
     if (!tags.includes("All items"))
         tags.push("All items");
 
     const renderContent = () => {
+
         if(state.filteredProducts.length > 0) {
             return (
                 <>
@@ -28,6 +31,7 @@ const Home = ({ state, dispatch, ctx }: PageProps) => {
                         product={product}
                         key={`product-${index}`}
                         dispatch={dispatch}
+                        isSelected={shoppingProducts.includes(product)}
                     />
                 ))}
                 </section>

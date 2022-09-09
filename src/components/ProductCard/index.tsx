@@ -9,10 +9,11 @@ interface Props {
     children?: React.ReactNode;
     product: Product;
     dispatch?: React.Dispatch<ApplicationAction>
+    isSelected?: boolean;
 }
 
 
-const ProductCard = ({ children, product, dispatch }: Props) => {
+const ProductCard = ({ children, product, dispatch, isSelected }: Props) => {
     const navigateTo: NavigateFunction = useNavigate();
     
     const addProductToCart = () =>{
@@ -21,11 +22,18 @@ const ProductCard = ({ children, product, dispatch }: Props) => {
         }
     }
 
+    const deleteCartElement = () => {
+        if(dispatch){
+            dispatch({type: "REMOVE_PRODUCT_FROM_CART", payload: product});
+        } 
+    }
+
     const goToProductDetail = () => {
         const url = `product/${product.title}`;
         navigateTo(url);
     }
 
+    console.log("isSelected: ", isSelected);
     return (
         <div className="flex flex-col items-center justify-center h-[660px] max-w-[400px]">
             <img
@@ -42,7 +50,11 @@ const ProductCard = ({ children, product, dispatch }: Props) => {
                 </div>
                 <div className="flex justify-between mt-auto">
                     <div className="flex items-center gap-2 text-xl">{product.rating.rate} <AiFillStar/></div>
-                    <button onClick={addProductToCart} className="add-button">Add to cart</button>
+                    {!isSelected
+                    ? <button onClick={addProductToCart} className="add-button">Add to cart</button>
+                    : <button onClick={deleteCartElement} className="remove-button">Remove</button>
+                    }
+                   
                 </div>
             </div>
         </div>

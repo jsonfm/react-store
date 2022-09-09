@@ -3,6 +3,7 @@ import { Product } from "./product";
 
 export interface ApplicationState {
     products: Array<Product>;
+    filter: string;
     filteredProducts: Array<Product>;
     shoppingProducts: Array<Product>;
     categories: string[];

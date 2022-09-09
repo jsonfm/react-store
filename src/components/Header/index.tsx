@@ -68,11 +68,9 @@ const Header = ({ dispatch }: HeaderProps) => {
                         </div>
                     ))}
                     </div>
-                    <button className="w-full h-10  flex items-center justify-center bg-green-500 text-white" onClick={toggleShoppingCollapse}>
-                        <Link to="/payment">
-                            <a>Payment</a>
-                        </Link>
-                    </button>
+                    <Link to="/payment" className="w-full h-10  flex items-center justify-center bg-green-500 text-white" onClick={toggleShoppingCollapse}>
+                        <a>Payment</a>
+                    </Link>
                 </div>
 
                 <div className={`text-2xl flex gap-5`}>
